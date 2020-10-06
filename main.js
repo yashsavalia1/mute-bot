@@ -65,9 +65,10 @@ bot.on('message', message => {
       })
         .then(console.log("Role Created."))
         .catch(console.error);
-    
-      message.member.roles.add(message.guild.roles.cache.find(role => role.name === "botUser").id);
-      
+      let tempRole = message.guild.roles.cache.find(role => role.name === "botUser").id;
+      console.log("succ");
+      message.member.roles.add(tempRole);
+      console.log("hlie");
 
       message.reply('A new role called "botUser" was created and you were assigned to it. Only those with the "botUser" role can now use this bot.');
     } catch (error) {
