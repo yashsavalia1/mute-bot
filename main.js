@@ -56,23 +56,26 @@ bot.on('message', message => {
     }
   } else {
     // Create a new role with data
+
+    var tempRole;
     message.guild.roles.create({
       data: {
         name: "botUser"
       }
     })
-      .then(console.log("Role Created."))
-      .catch(console.error);
-    try {
-      //adds the member to the id of the the role found called 'botuser'
-      const tempRole = message.guild.roles.cache.find(role => role.name === 'botUser');
-      console.log("created temp role: " + tempRole);
-      const member = message.mentions.members.first();
-      member.roles.add(tempRole);
-      console.log("gave member");
-    } catch (err) {
-      console.log(err)
-    }
+      .then(tempRole = message.guild.roles.cache.find(role => role.name === 'botUser'))
+  .catch(console.error);
+
+  console.log("created temp role: " + tempRole);
+  const member = message.mentions.members.first();
+  member.roles.add(tempRole);
+  console.log("gave member");
+try {
+  //adds the member to the id of the the role found called 'botuser'
+
+} catch (err) {
+  console.log(err)
+}
 
   }
 });
