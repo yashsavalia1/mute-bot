@@ -12,25 +12,30 @@ client.on('message', message => {
 
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-  let adminRole = message.guild.roles.cache.find(role => role.name === "Admin");
+  let adminRole;
+  if (message.guild.roles.cache.find(role => role.name === "Admin") != null) {
+    adminRole = message.guild.roles.cache.find(role => role.name === "Admin");
+    
+    const args = message.content.slice(prefix.length).split(" ");
+    const command = args.shift().toLowerCase();
 
-  const args = message.content.slice(prefix.length).split(" ");
-  const command = args.shift().toLowerCase();
-
-  if (message.member.roles.cache.has(adminRole.id)) {
-    switch (command) {
-      case 'mute':
-        mute(message, true);
-        break;
-      case 'unmute':
-        mute(message, false);
-        break;
-      case 'umute':
-        mute(message, false);
-        break;
-    }
-  } else {
+    if (message.member.roles.cache.has(adminRole.id)) {
+      switch (command) {
+        case 'mute':
+          mute(message, true);
+          break;
+        case 'unmute':
+          mute(message, false);
+          break;
+        case 'umute':
+          mute(message, false);
+          break;
+      }
+    } else { }
   }
+
+
+
 });
 
 function mute(message, setMute) {
