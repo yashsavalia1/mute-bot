@@ -1,7 +1,7 @@
 module.exports = {
     name: 'mute',
     description: "Mutes all in your voice channel",
-    mute(message, setMute) {
+    execute(message, setMute) {
         if (message.member.voice.channel) {
             let channel = message.guild.channels.cache.get(message.member.voice.channel.id);
             for (const [memberID, member] of channel.members) {
