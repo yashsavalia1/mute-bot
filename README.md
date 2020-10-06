@@ -8,6 +8,6 @@ COMMANDS:
 
 -mute	|   Mutes all the people in your voice chat.
 
--unmute	|   Unmutes all the poeple in your voice chat.
+-unmute	|   Unmutes all the people in your voice chat.
 
 
