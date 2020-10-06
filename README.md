@@ -3,8 +3,8 @@
 
 COMMANDS:
 
--mute	Mutes all the people in your voice chat.
+-mute	|   Mutes all the people in your voice chat.
 
--unmute	Unmutes all the poeple in your voice chat.
+-unmute	|   Unmutes all the poeple in your voice chat.
 
 In order to use the bot, you must create a role called "Admin" and only those with the "Admin" role can use this bot.
