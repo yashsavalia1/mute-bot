@@ -60,9 +60,7 @@ bot.on('message', message => {
       message.guild.createRole()
         .then(console.log("Role Created."))
         .catch(console.error);
-
-      message.member.roles.add(tempRole.id);
-
+  
       message.reply('A new role called "botUser" was created and you were assigned to it. Only those with the "botUser" role can now use this bot.');
     } catch (error) {
       message.reply('The bot tried to create a role but failed! Try again.');
