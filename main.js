@@ -65,7 +65,7 @@ bot.on('message', message => {
       })
         .then(console.log("Role Created."))
         .catch(console.error);
-      let tempRole = message.guild.roles.cache.find(role => role.name === "botUser");
+      let tempRole = member.guild.roles.get('botUser');
       console.log(tempRole);
       message.member.roles.add(tempRole)
       .then(message.reply('A new role called "botUser" was created and ' + 
