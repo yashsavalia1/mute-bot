@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const config = require('./config.json');
+//const config = require('./config.json');
 
 const prefix = '-';
 
@@ -49,4 +49,4 @@ function mute(message, setMute) {
 }
 
 
-client.login(config.token);
+client.login(process.env.MUTE_BOT_TOKEN);
