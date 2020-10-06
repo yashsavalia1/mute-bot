@@ -55,17 +55,23 @@ bot.on('message', message => {
     }
   } else {
     // Create a new role with data and a reason
-    message.guild.roles.create( {
-      data: "botUser"
+    message.guild.createRole({
+      name: "botUser",
+      color: "BLUE"
     })
-    .then(console.log("Hello"))
-    .catch(console.error);
+      .then(console.log("Role Created."))
+      .catch(console.error);
 
     //adds the member to the id of the the role found called 'botuser'
-    let tempRole = message.guild.roles.cache.find(role => role.name === "botUser"); 
-    message.member.roles.add(tempRole.id);
-    
-    message.reply('A new role called "botUser" was created and you were assigned to it. Only those with the "botUser" role can now use this bot.');
+    try {
+      let tempRole = message.guild.roles.cache.find(role => role.name === "botUser");
+      message.member.roles.add(tempRole.id);
+
+      message.reply('A new role called "botUser" was created and you were assigned to it. Only those with the "botUser" role can now use this bot.');
+    } catch (error) {
+      message.reply('The bot tried to create a role but failed! Try again.');
+    }
+
   }
 
 });
