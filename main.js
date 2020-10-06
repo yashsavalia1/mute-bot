@@ -47,7 +47,7 @@ bot.on('message', message => {
           bot.commands.get('mute').execute(message, false);
           break;
         case 'um':
-          bot.commands.get('mute').execute(message, true);
+          bot.commands.get('mute').execute(message, false);
           break;
       }
     } else {
