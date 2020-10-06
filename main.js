@@ -58,7 +58,11 @@ bot.on('message', message => {
     //adds the member to the id of the the role found called 'botuser'
     try {
       // Create a new role with data and a reason
-      message.guild.roles.create()
+      message.guild.roles.create( {
+        data: {
+          name: "botUser"
+        }
+      })
         .then(console.log("Role Created."))
         .catch(console.error);
   
