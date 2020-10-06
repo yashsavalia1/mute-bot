@@ -4,7 +4,7 @@ module.exports = {
     execute(message, setMute) {
         if (message.member.voice.channel) {
             let channel = message.guild.channels.cache.get(message.member.voice.channel.id);
-            for (const [memberID, member] of channel.members) {
+            for (const [member] of channel.members) {
               // I added the following if statement to mute everyone but the invoker:
               // if (member != message.member)
       

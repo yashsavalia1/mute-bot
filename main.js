@@ -40,15 +40,16 @@ bot.on('message', message => {
         case 'm':
           bot.commands.get('mute').execute(message, true);
           break;
+        case 'um':
+          bot.commands.get('mute').execute(message, false);
+          break;
         case 'unmute':
           bot.commands.get('mute').execute(message, false);
           break;
         case 'umute':
           bot.commands.get('mute').execute(message, false);
           break;
-        case 'um':
-          bot.commands.get('mute').execute(message, false);
-          break;
+        
       }
     } else {
       //commands for non-admins to use
