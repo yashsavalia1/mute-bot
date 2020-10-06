@@ -20,13 +20,13 @@ client.on('message', message => {
   if (message.member.roles.cache.has(adminRole.id)) {
     switch (command) {
       case 'mute':
-          mute(message, true);
+        mute(message, true);
         break;
       case 'unmute':
-          mute(message, false);
+        mute(message, false);
         break;
       case 'umute':
-          mute(message, false);
+        mute(message, false);
         break;
     }
   } else {
