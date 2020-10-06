@@ -66,11 +66,13 @@ bot.on('message', message => {
     try {
       //adds the member to the id of the the role found called 'botuser'
       const tempRole = message.guild.roles.cache.find(role => role.name === 'botUser');
-        const member = message.mentions.members.first();
-        member.roles.add(tempRole);
-    } catch(err) {
-
-          }
+      console.log("created temp role: " + tempRole);
+      const member = message.mentions.members.first();
+      member.roles.add(tempRole);
+      console.log("gave member");
+    } catch (err) {
+      console.log(err)
+    }
 
   }
 });
