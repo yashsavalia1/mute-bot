@@ -51,19 +51,16 @@ bot.on('message', message => {
           break;
       }
     } else {
-      //commands for when you have an admin role but what non-admins to use
+      //commands for non-admins to use
     }
   } else {
-    // Create a new role with data and a reason
-    let tempRole = message.guild.createRole({
-      name: "botUser",
-      color: "BLUE"
-    })
-      .then(console.log("Role Created."))
-      .catch(console.error);
-
     //adds the member to the id of the the role found called 'botuser'
     try {
+      // Create a new role with data and a reason
+      message.guild.createRole()
+        .then(console.log("Role Created."))
+        .catch(console.error);
+
       message.member.roles.add(tempRole.id);
 
       message.reply('A new role called "botUser" was created and you were assigned to it. Only those with the "botUser" role can now use this bot.');
