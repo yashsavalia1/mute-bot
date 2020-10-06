@@ -48,4 +48,5 @@ function mute(message, setMute) {
   }
 }
 
+
 client.login(config.token);
