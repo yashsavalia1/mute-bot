@@ -1,57 +1,72 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const bot = new Discord.Client();
 //const config = require('./config.json');
 
 const prefix = '-';
 
-client.once('ready', () => {
+const fs = require('fs');
+bot.commands = new Discord.Collection();
+
+//reads commands folder
+const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
+  bot.commands.set(command.name, command);
+}
+
+//starts the bot
+bot.once('ready', () => {
   console.log('Mute Bot Online!');
 });
 
-client.on('message', message => {
+//waits for message
+bot.on('message', message => {
 
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
+  const args = message.content.slice(prefix.length).split(" ");
+  const command = args.shift().toLowerCase();
+
   let adminRole;
-  if (message.guild.roles.cache.find(role => role.name === "Admin") != null) {
-    adminRole = message.guild.roles.cache.find(role => role.name === "Admin");
-    
-    const args = message.content.slice(prefix.length).split(" ");
-    const command = args.shift().toLowerCase();
+
+  if (message.guild.roles.cache.find(role => role.name === "botUser"/*name of role that can use bot*/) != null) {
+    adminRole = message.guild.roles.cache.find(role => role.name === "botUser");
 
     if (message.member.roles.cache.has(adminRole.id)) {
       switch (command) {
         case 'mute':
-          mute(message, true);
+          bot.commands.get('mute').execute(message, true);
+          break;
+        case 'm':
+          bot.commands.get('mute').execute(message, true);
           break;
         case 'unmute':
-          mute(message, false);
+          bot.commands.get('mute').execute(message, false);
           break;
         case 'umute':
-          mute(message, false);
+          bot.commands.get('mute').execute(message, false);
+          break;
+        case 'um':
+          bot.commands.get('mute').execute(message, true);
           break;
       }
-    } else { }
+    } else {
+      //commands for when you have an admin role but what non-admins to use
+    }
+  } else {
+    // Create a new role with data and a reason
+    message.guild.roles.create({
+      data: {
+        name: 'botUser',
+        color: 'BLUE',
+      },
+      reason: 'Create Bot User!',
+    }).then(console.log).catch(console.error);
+
+    message.member.roles.add(message.guild.roles.cache.find(role => role.name === "botUser").id);
+    message.reply('A new role called botUser was created and you were assigned to it. Only those with the botUser role can now use this bot.')
   }
-
-
 
 });
 
-function mute(message, setMute) {
-  if (message.member.voice.channel) {
-    let channel = message.guild.channels.cache.get(message.member.voice.channel.id);
-    for (const [memberID, member] of channel.members) {
-      // I added the following if statement to mute everyone but the invoker:
-      // if (member != message.member)
-
-      // This single line however, nested inside the for loop, should mute everyone in the channel:
-      member.voice.setMute(setMute);
-    }
-  } else {
-    message.reply('You need to join a voice channel first!');
-  }
-}
-
-
-client.login(process.env.MUTE_BOT_TOKEN);
+bot.login(process.env.MUTE_BOT_TOKEN);
