@@ -63,8 +63,9 @@ bot.on('message', message => {
       reason: 'Create Bot User!',
     }).then(console.log).catch(console.error);
 
-    message.member.roles.add(message.guild.roles.cache.find(role => role.name === "botUser").id);
-    message.reply('A new role called botUser was created and you were assigned to it. Only those with the botUser role can now use this bot.')
+    //adds the member to the id of the the role found called 'botuser'
+    message.member.roles.add(message.guild.roles.resolveID(message.guild.roles.cache.find(role => role.name === "botUser"))); 
+    message.reply('A new role called "botUser" was created and you were assigned to it. Only those with the "botUser" role can now use this bot.')
   }
 
 });
