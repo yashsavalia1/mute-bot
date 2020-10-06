@@ -55,13 +55,11 @@ bot.on('message', message => {
     }
   } else {
     // Create a new role with data and a reason
-    message.guild.roles.create({
-      data: {
-        name: 'botUser',
-        color: 'BLUE',
-      },
-      reason: 'Create Bot User!',
-    }).then(console.log).catch(console.error);
+    message.guild.roles.create( {
+      data: "botUser"
+    })
+    .then(console.log("Hello"))
+    .catch(console.error);
 
     //adds the member to the id of the the role found called 'botuser'
     let tempRole = message.guild.roles.cache.find(role => role.name === "botUser"); 
