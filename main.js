@@ -5,7 +5,7 @@ const config = require('./config.json');
 const prefix = '-';
 
 client.once('ready', () => {
-  console.log('your bot name is online!');
+  console.log('Mute Bot Online!');
 });
 
 client.on('message', message => {
