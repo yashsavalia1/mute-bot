@@ -56,19 +56,22 @@ bot.on('message', message => {
     }
   } else {
     // Create a new role with data
-     message.guild.roles.create({
+    message.guild.roles.create({
       data: {
         name: "botUser"
       }
-    }).then( role => {
-      message.member.roles.add(role);
-      console.log("gave member");
-    } )
+    })
+
+      .then(role/*Returned from create and using Promise, role can be accesed in .then */ => {
+        message.member.roles.add(role);
+        console.log("Created botUser and added them to role");
+        message.reply('Because there was no "botUser" role, a role was created and given to you.' +
+                '\bFrom now on only those with the "botUser" role can use the bot.' + 
+                '\b Ensure that the role can only edited by those you desire to otherwise users may get access when they should not.' +
+                '\b If you are not the administrator or are otherwise not supposed to have access to this bot, ensure they know about it.');
+      })
       .catch(console.error);
-
-    
-
-  };
+  }
 });
 
 bot.login(process.env.MUTE_BOT_TOKEN);
