@@ -25,7 +25,7 @@ bot.on('message', message => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const args = message.content.slice(prefix.length).split(" ");
-  const command = args.shift().toLowerCase();
+  const comm = args.shift().toLowerCase();
 
   let adminRole;
 
@@ -33,7 +33,7 @@ bot.on('message', message => {
     adminRole = message.guild.roles.cache.find(role => role.name === "botUser");
 
     if (message.member.roles.cache.has(adminRole.id)) {
-      switch (command) {
+      switch (comm) {
         case 'mute':
           bot.commands.get('mute').execute(message, true);
           break;
