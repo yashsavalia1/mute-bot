@@ -61,8 +61,8 @@ bot.on('message', message => {
         name: "botUser"
       }
     }).then( role => {
-      console.log("the role is "+ role);
-
+      message.member.roles.add(role);
+      console.log("gave member");
     } )
       .catch(console.error);
 
