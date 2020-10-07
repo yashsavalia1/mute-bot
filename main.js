@@ -66,9 +66,9 @@ bot.on('message', message => {
         message.member.roles.add(role);
         console.log("Created botUser and added them to role");
         message.reply('Because there was no "botUser" role, a role was created and given to you.' +
-                '\bFrom now on only those with the "botUser" role can use the bot.' + 
-                '\b Ensure that the role can only edited by those you desire to otherwise users may get access when they should not.' +
-                '\b If you are not the administrator or are otherwise not supposed to have access to this bot, ensure they know about it.');
+                '\nFrom now on only those with the "botUser" role can use the bot.' + 
+                '\nEnsure that the role can only edited by those you desire to otherwise users may get access when they should not.' +
+                '\nIf you are not the administrator or are otherwise not supposed to have access to this bot, ensure they know about it.');
       })
       .catch(console.error);
   }
