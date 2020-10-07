@@ -9,10 +9,15 @@ In order to use the bot, you must create a role called "botUser" and only those 
 ## COMMANDS: ##
 
 -mute	|   Mutes all the people in your voice chat. 
+
 Aliases: 
+
 -m
 
 -unmute	|   Unmutes all the people in your voice chat.
+
 Aliases:
+
 -umute
+
 -um
