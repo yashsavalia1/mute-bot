@@ -1,6 +1,6 @@
-# MUTE BOT # 
+# A Mute Bot # 
 
-## A Discord bot that lets you mute a voice chat. (Perfect for Among Us) ##
+## A simple Discord bot that lets you mute a voice chat. (Perfect for Among Us) ##
 
 ## Get the bot at https://discord.com/api/oauth2/authorize?client_id=762181443816259635&permissions=8&scope=bot ##
 
