@@ -56,24 +56,19 @@ bot.on('message', message => {
     }
   } else {
     // Create a new role with data
-    message.guild.roles.create({
+     message.guild.roles.create({
       data: {
         name: "botUser"
       }
-    }).then(
-        function() {
-          //adds the member to the id of the the role found called 'botuser'
-         let tempRole = message.guild.roles.cache.find(role => role.name === 'botuser');
-          console.log("created temp role: " + tempRole);
-          message.member.roles.add(tempRole);
-          console.log("gave member");
-        }
-          )
+    }).then( role => {
+      console.log("the role is "+ role);
+
+    } )
       .catch(console.error);
 
     
 
-  }
+  };
 });
 
 bot.login(process.env.MUTE_BOT_TOKEN);
