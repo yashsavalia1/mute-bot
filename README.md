@@ -10,14 +10,11 @@ In order to use the bot, you must create a role called "botUser" and only those 
 
 -mute	|   Mutes all the people in your voice chat. 
 
-Aliases: 
-
+Aliases: <br>
 -m
 
 -unmute	|   Unmutes all the people in your voice chat.
 
-Aliases:
-
--umute
-
+Aliases: <br>
+-umute <br>
 -um
