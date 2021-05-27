@@ -1,4 +1,4 @@
-# A Mute Bot (NOW INACTIVE)# 
+# A Mute Bot (NOW INACTIVE) #
 
 ## A simple Discord bot that lets you mute a voice chat. (Perfect for Among Us) ##
 
